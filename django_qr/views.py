@@ -12,9 +12,11 @@ def generate_qr_code(request):
 
             # generate qr code
             qr = qrcode.make(url)
-            file_name = rest_name.replace
+            file_name = res_name.replace(" ", "_").lower() + "_menu.png"
 
-            qr.save("test_qr.png")
+            qr.save(file_name)
+            context ={}
+            return render(request, 'qr_result.html')
 
     else:
         form = QRCodeForm()
